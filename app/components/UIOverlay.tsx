@@ -63,20 +63,21 @@ export const UIOverlay: React.FC<UIOverlayProps> = ({
               <div className="text-blue-200 text-sm uppercase mt-4">High Score</div>
               <div className="text-2xl font-bold text-yellow-300">{highScore.toLocaleString()}</div>
             </div>
-            
-            <button 
-              onClick={onRestart}
-              className="bg-white text-slate-900 px-8 py-3 rounded-full text-xl font-bold hover:bg-blue-50 transition-colors shadow-[0_0_20px_rgba(255,255,255,0.4)]"
-            >
-              Try Again
-            </button>
+            <div className="flex flex-col items-center gap-4">
+				<button 
+				onClick={onRestart}
+				className="bg-white text-slate-900 px-8 py-3 rounded-full text-xl font-bold hover:bg-blue-50 transition-colors shadow-[0_0_20px_rgba(255,255,255,0.4)]"
+				>
+				Try Again
+				</button>
 
-			<button 
-              onClick={onQuit}
-              className="bg-white text-slate-900 px-8 py-3 rounded-full text-xl font-bold hover:bg-blue-50 transition-colors shadow-[0_0_20px_rgba(255,255,255,0.4)]"
-            >
-              Quit
-            </button>
+				<button 
+				onClick={onQuit}
+				className="bg-white text-slate-900 px-8 py-3 rounded-full text-xl font-bold hover:bg-blue-50 transition-colors shadow-[0_0_20px_rgba(255,255,255,0.4)]"
+				>
+				Quit
+				</button>
+			</div>
           </div>
         )}
       </div>
