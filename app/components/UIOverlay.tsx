@@ -8,6 +8,7 @@ interface UIOverlayProps {
   highScore: number;
   onStart: () => void;
   onRestart: () => void;
+  onQuit: () => void;
 }
 
 export const UIOverlay: React.FC<UIOverlayProps> = ({
@@ -16,7 +17,8 @@ export const UIOverlay: React.FC<UIOverlayProps> = ({
   multiplier,
   highScore,
   onStart,
-  onRestart
+  onRestart,
+  onQuit
 }) => {
   return (
     <div className="absolute inset-0 pointer-events-none flex flex-col items-center justify-between p-6">
@@ -67,6 +69,13 @@ export const UIOverlay: React.FC<UIOverlayProps> = ({
               className="bg-white text-slate-900 px-8 py-3 rounded-full text-xl font-bold hover:bg-blue-50 transition-colors shadow-[0_0_20px_rgba(255,255,255,0.4)]"
             >
               Try Again
+            </button>
+
+			<button 
+              onClick={onQuit}
+              className="bg-white text-slate-900 px-8 py-3 rounded-full text-xl font-bold hover:bg-blue-50 transition-colors shadow-[0_0_20px_rgba(255,255,255,0.4)]"
+            >
+              Quit
             </button>
           </div>
         )}

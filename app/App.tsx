@@ -28,6 +28,18 @@ const App: React.FC = () => {
     }
   }, [gameState, score, highScore]);
 
+  const sendToUnity = (type, payload = {}) => {
+	const message = {
+	  type,
+	  data: payload
+	}
+	if (window.vuplex && window.vuplex.postMessage) {
+		window.vuplex.postMessage(JSON.stringify(message))
+	  } else {
+		console.log("Not running inside Unity:", message)
+	  }
+	}
+
   const handleStart = () => {
     setGameState(GameState.PLAYING);
     setScore(0);
@@ -39,6 +51,10 @@ const App: React.FC = () => {
     setGameState(GameState.MENU);
     setScore(0);
     setMultiplier(1);
+  };
+
+  const handleQuit = () => {
+	sendToUnity("LXModule.ModuleFrontendModel+CompleteModule, LevelExMedical.Module")
   };
 
   return (
@@ -55,7 +71,8 @@ const App: React.FC = () => {
         multiplier={multiplier} 
         highScore={highScore}
         onStart={handleStart} 
-        onRestart={handleRestart} 
+        onRestart={handleRestart}
+		onQuit={handleQuit}
       />
     </div>
   );
